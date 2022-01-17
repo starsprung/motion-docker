@@ -1,0 +1,11 @@
+--- event.c.orig	2022-01-16 19:17:55.000000000 -0800
++++ event.c	2022-01-16 19:19:33.000000000 -0800
+@@ -565,6 +565,8 @@
+         }
+         event(cnt, EVENT_FILECREATE, NULL, fullfilename, (void *)FTYPE_IMAGE_SNAPSHOT, tv1);
+ 
++        return;
++
+         /*
+          *  Update symbolic link *after* image has been written so that
+          *  the link always points to a valid file.

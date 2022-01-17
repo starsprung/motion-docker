@@ -12,8 +12,11 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get --quiet --yes clean && \
     rm -rf /var/lib/apt/lists/*
 
+COPY event.c.patch /tmp/
+
 RUN git clone https://github.com/Motion-Project/motion.git  && \
    cd motion  && \
+   patch src/event.c /tmp/event.c.patch && \
    autoreconf -fiv && \
    ./configure && \
    make clean && \
